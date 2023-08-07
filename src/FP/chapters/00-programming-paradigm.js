@@ -155,14 +155,14 @@ function createCountUpButton(container, { count: initialCount = 0, step = 1 } = 
   container.append(countUpButton);
 }
 
-const demoContainer = document.getElementById('demo');
+// const demoContainer = document.getElementById('demo');
 
 // 재사용을 목적으로 하는 컴포넌트 (함수로 구현)
 /* 기본 옵션: { count: 0, step: 1, max = 10 } */
-createCountUpButton(demoContainer);
-createCountUpButton(demoContainer, { count: 1 }/* 사용자 정의 옵션 */);
-createCountUpButton(demoContainer, { count: 2 });
-createCountUpButton(demoContainer, { count: 0, step: 6 });
+// createCountUpButton(demoContainer);
+// createCountUpButton(demoContainer, { count: 1 }/* 사용자 정의 옵션 */);
+// createCountUpButton(demoContainer, { count: 2 });
+// createCountUpButton(demoContainer, { count: 0, step: 6 });
 
 // 과제
 // - `max` prop을 추가하고, count 값이 max보다 커지면 사용자가 더 이상 버튼을 누를 수 없도록 막는다.
@@ -172,7 +172,37 @@ createCountUpButton(demoContainer, { count: 0, step: 6 });
 // JavaScript 프로그래밍 패러다임
 // → 클래스(class)를 사용해 구현합니다. (참고: https://mzl.la/3QrTKlF)
 
-class CountUpButton {}
+// 붕어빵틀(생성자함수: 클래스)
+class CountUpButton {
+  #config;
+
+  constructor(userOptions) {
+    this.#config = { ...CountUpButton.defaultProps, ...userOptions };
+    this.init();
+  }
+
+  init() {
+    console.log(this.#config);
+  }
+
+  // static field
+  static defaultProps = { 
+    count: 0, 
+    step: 1, 
+  };
+  
+}
+
+
+// 새로운(new) 붕어빵(객체: 인스턴스) 생성
+const firstCountUp = new CountUpButton({
+  step: 3,
+});
+
+
+const demoContainer = document.getElementById('demo');
+
+// demoContainer.append(firstCountUp.render());
 
 // --------------------------------------------------------------------------
 // 웹 컴포넌트(Web Components) API
