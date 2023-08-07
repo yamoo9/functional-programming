@@ -27,7 +27,23 @@ console.log('원본 데이터\n', courses);
 
 // ES2015(v6)
 // [전개구문(spread syntax)]을 사용하면 배열을 복사할 수 있다.
-const updateCourses = [...courses];
+// 얕은 복사 (shallow copy)
+let updateCourses = [...courses];
+
+// 기능 1. 좌우 공백 제거
+// 명령형으로 프로그래밍 한다.
+// C, JAVA 문법
+// for문
+for(let i=0, l=updateCourses.length; i<l; i = i + 1) {
+  // 객체 복제는 어떻게???
+  // [전개구문(spread syntax)]을 사용한다.
+  // 얕은 복사 (shallow copy)
+  const course = { ...updateCourses[i] };
+  course.name = course.name.trim();
+  updateCourses[i] = course;
+}
+
+// 기능 2. 대문자화
 
 console.log('변형된 데이터\n', updateCourses);
 
