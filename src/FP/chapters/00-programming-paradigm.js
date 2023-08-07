@@ -5,7 +5,6 @@
 // - 함수, 객체 지향 프로그래밍 비교
 // --------------------------------------------------------------------------
 
-
 // --------------------------------------------------------------------------
 // 명령형 프로그래밍
 
@@ -25,13 +24,13 @@ const courses = [
 // ES2015(v6)
 // [전개구문(spread syntax)]을 사용하면 배열을 복사할 수 있다.
 // 얕은 복사 (shallow copy)
-const updateCourses = [] // [...courses];
+const updateCourses = []; // [...courses];
 
 // 1. 과정 배열을 순환하여 각 과정 이름의 좌우 공백 제거
 // 명령형으로 프로그래밍 한다.
 // C, JAVA 문법
 // for문
-for(let i=0, l=courses.length; i<l; i = i + 1) {
+for (let i = 0, l = courses.length; i < l; i = i + 1) {
   // 객체 복제는 어떻게???
   // [전개구문(spread syntax)]을 사용한다.
   // 얕은 복사 (shallow copy)
@@ -41,14 +40,14 @@ for(let i=0, l=courses.length; i<l; i = i + 1) {
 }
 
 // 2. 과정 배열을 순환하여 각 과정 이름 대문자화
-for(let i=0, l=updateCourses.length; i<l; ++i) {
+for (let i = 0, l = updateCourses.length; i < l; ++i) {
   const course = updateCourses[i];
   course.name = course.name.toUpperCase();
 }
 
 // 3. 배열 원소의 `name` 속성의 공백을 밑줄(_)로 변경하는 기능 추가
 // 명령형 프로그래밍 방식으로
-for(let i=0, l=updateCourses.length; i<l; ++i) {
+for (let i = 0, l = updateCourses.length; i < l; ++i) {
   const course = updateCourses[i];
   course.name = course.name.replace(/\s+/g, '_');
 }
@@ -56,7 +55,7 @@ for(let i=0, l=updateCourses.length; i<l; ++i) {
 // console.log('업데이트 데이터\n', updateCourses);
 
 // console.assert(
-//   !Object.is(courses, updateCourses), 
+//   !Object.is(courses, updateCourses),
 //   '🚨 courses와 updateCourses는 동일한 객체이다.'
 // );
 
@@ -78,7 +77,7 @@ const subjects = [
 
 // 1. 객체 이름(name) 속성 좌우 공백 제거 함수 선언
 function toTrim(object) {
-  const o = {...object};
+  const o = { ...object };
   o.name = o.name.trim();
   return o;
 }
@@ -88,7 +87,7 @@ function toTrim(object) {
 
 // 2. 객체 이름(name) 속성 대문자화 함수 선언
 function toUpperCase(object) {
-  const o = {...object};
+  const o = { ...object };
   o.name = o.name.toUpperCase();
   return o;
 }
@@ -96,7 +95,7 @@ function toUpperCase(object) {
 // 3. 배열 원소의 `name` 속성의 공백을 밑줄(_)로 변경하는 기능 추가
 // 선언형 프로그래밍 방식으로
 function toUnderscore(object) {
-  const o = {...object};
+  const o = { ...object };
   o.name = o.name.replace(/\s+/g, '_');
   return o;
 }
@@ -118,13 +117,12 @@ function toUnderscore(object) {
 }) */
 
 const updateSubjects = subjects
-                        // .map(toTrim)
-                        // .map(toUpperCase)
-                        .map(toUnderscore)
-                        .map(toTrim)
+  // .map(toTrim)
+  // .map(toUpperCase)
+  .map(toUnderscore)
+  .map(toTrim);
 
 // console.log('업데이트 데이터\n', updateSubjects);
-
 
 // --------------------------------------------------------------------------
 // JavaScript 프로그래밍 패러다임
@@ -141,38 +139,39 @@ function createCountUpButton(container) {
 
   const render = (newCount) => {
     countUpButton.textContent = String(newCount);
-  }
+  };
 
   const handleCountUp = (e) => {
     count += 1;
     render(count);
-  }
-  
-  countUpButton.setAttribute('type', 'button');
-  render(count);
+  };
 
+  countUpButton.setAttribute('type', 'button');
+  countUpButton.classList.add('CountUpButton');
   countUpButton.addEventListener('click', handleCountUp);
+
+  render(count);
 
   container.append(countUpButton);
 }
 
-createCountUpButton(
-  document.getElementById('demo')
-);
+const demoContainer = document.getElementById('demo');
 
-
-
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
+createCountUpButton(demoContainer);
 
 // --------------------------------------------------------------------------
 // JavaScript 프로그래밍 패러다임
 // → 클래스(class)를 사용해 구현합니다. (참고: https://mzl.la/3QrTKlF)
 
-class CountUpButton {
-
-}
-
+class CountUpButton {}
 
 // --------------------------------------------------------------------------
 // 웹 컴포넌트(Web Components) API
 // → 웹 컴포넌트를 사용해 구현합니다. (참고: https://mzl.la/3YjFdu9)
-
