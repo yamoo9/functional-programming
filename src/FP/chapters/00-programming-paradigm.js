@@ -74,7 +74,7 @@ const subjects = [
   },
 ];
 
-console.log('원본 데이터\n', subjects);
+// console.log('원본 데이터\n', subjects);
 
 // 1. 객체 이름(name) 속성 좌우 공백 제거 함수 선언
 function toTrim(object) {
@@ -123,17 +123,53 @@ const updateSubjects = subjects
                         .map(toUnderscore)
                         .map(toTrim)
 
-console.log('업데이트 데이터\n', updateSubjects);
+// console.log('업데이트 데이터\n', updateSubjects);
 
 
 // --------------------------------------------------------------------------
 // JavaScript 프로그래밍 패러다임
 // → 함수(function)를 사용해 구현합니다.
 
+function createCountUpButton(container) {
+  if (!container || container.nodeType !== document.ELEMENT_NODE) {
+    throw new Error('container는 문서의 요소가 아닙니다.');
+  }
+
+  let count = 0;
+
+  const countUpButton = document.createElement('button');
+
+  const render = (newCount) => {
+    countUpButton.textContent = String(newCount);
+  }
+
+  const handleCountUp = (e) => {
+    count += 1;
+    render(count);
+  }
+  
+  countUpButton.setAttribute('type', 'button');
+  render(count);
+
+  countUpButton.addEventListener('click', handleCountUp);
+
+  container.append(countUpButton);
+}
+
+createCountUpButton(
+  document.getElementById('demo')
+);
+
+
+
 
 // --------------------------------------------------------------------------
 // JavaScript 프로그래밍 패러다임
 // → 클래스(class)를 사용해 구현합니다. (참고: https://mzl.la/3QrTKlF)
+
+class CountUpButton {
+
+}
 
 
 // --------------------------------------------------------------------------
