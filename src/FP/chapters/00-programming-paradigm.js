@@ -46,6 +46,12 @@ for(let i=0, l=updateCourses.length; i<l; ++i) {
   course.name = course.name.toUpperCase();
 }
 
+// 3. 배열 원소의 `name` 속성의 공백을 밑줄(_)로 변경하는 기능 추가
+// 명령형 프로그래밍 방식으로
+for(let i=0, l=updateCourses.length; i<l; ++i) {
+  const course = updateCourses[i];
+  course.name = course.name.replace(/\s+/g, '_');
+}
 
 // console.log('업데이트 데이터\n', updateCourses);
 
@@ -87,6 +93,14 @@ function toUpperCase(object) {
   return o;
 }
 
+// 3. 배열 원소의 `name` 속성의 공백을 밑줄(_)로 변경하는 기능 추가
+// 선언형 프로그래밍 방식으로
+function toUnderscore(object) {
+  const o = {...object};
+  o.name = o.name.replace(/\s+/g, '_');
+  return o;
+}
+
 // console.log(toUpperCase(subjects[0]));
 // console.log(toUpperCase(subjects[1]));
 
@@ -104,8 +118,10 @@ function toUpperCase(object) {
 }) */
 
 const updateSubjects = subjects
+                        // .map(toTrim)
+                        // .map(toUpperCase)
+                        .map(toUnderscore)
                         .map(toTrim)
-                        .map(toUpperCase);
 
 console.log('업데이트 데이터\n', updateSubjects);
 
