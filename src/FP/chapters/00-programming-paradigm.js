@@ -20,11 +20,18 @@ const courses = [
   },
 ];
 
-console.log(courses);
+console.log('원본 데이터\n', courses);
 
 // 1. 과정 배열을 순환하여 각 과정 이름의 좌우 공백 제거
 // 2. 과정 배열을 순환하여 각 과정 이름 대문자화
 
+// ES2015(v6)
+// [전개구문(spread syntax)]을 사용하면 배열을 복사할 수 있다.
+const updateCourses = [...courses];
+
+console.log('변형된 데이터\n', updateCourses);
+
+console.assert(!Object.is(courses, updateCourses), '🚨 courses와 updateCourses는 동일한 객체이다.');
 
 // --------------------------------------------------------------------------
 // 선언형 프로그래밍
