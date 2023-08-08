@@ -10,4 +10,4 @@
 
 
 import './styles/main.css';
-import './FP/chapters/00-programming-paradigm';
+import './FP/chapters/01-functional-principle';
