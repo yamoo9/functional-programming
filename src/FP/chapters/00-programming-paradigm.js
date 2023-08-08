@@ -99,7 +99,10 @@ function createCounterButton(element, { count = 0, step = 1, update = null } = {
 const counter = createCounterButton(
   document.createElement('button'), 
   {
-    count: 1
+    count: 1,
+    update(count) {
+      document.querySelector('.functional').textContent = String(count);
+    }
   }
 );
 
@@ -192,6 +195,10 @@ const counterButton = new CounterButton(
   }
 );
 
+counterButton.update((count) => {
+  document.querySelector('.object-oriented').textContent = String(count);
+})
+
 counterButton.mount(document.getElementById('demo'));
 
 
@@ -251,3 +258,9 @@ class CounterButtonComponent extends HTMLElement {
 }
 
 customElements.define('counter-button', CounterButtonComponent);
+
+const counterButtonEl = document.querySelector('counter-button');
+
+counterButtonEl.addEventListener('update', (e) => {
+  document.querySelector('.web-component').textContent = String(e.detail);
+});
