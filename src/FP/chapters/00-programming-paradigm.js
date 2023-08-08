@@ -189,7 +189,8 @@ class CountUpButton {
     this.render();
   }
 
-  // 렌더
+  // 렌더 (HTMLElement Node)
+  // return data type : HTMLButtonElement
   render() {
     console.log('렌더 시점')
     const button = document.createElement('button');
@@ -198,9 +199,20 @@ class CountUpButton {
     return button;
   }
 
+  // 렌더 (HTML String)
+  // return data type : string
+  renderHTML() {
+    return `
+      <button type="button">${String(this.#count)}</button>
+    `;
+  }
+
   // 마운트(mount) 시점
   mount(container) {
-    container?.append?.(this.render());
+    console.log(typeof this.render());
+    // container?.append?.(this.render());
+    console.log(typeof this.renderHTML())
+    container?.insertAdjacentHTML('beforeend', this.renderHTML());
   }
 
   // 성장(update) 시점
