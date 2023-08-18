@@ -10,4 +10,4 @@
 
 
 import './styles/main.css';
-import './FP/chapters/01-functional-principle';
+import './FP/chapters/08-jquery-react';

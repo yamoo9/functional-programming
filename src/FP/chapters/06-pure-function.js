@@ -23,6 +23,21 @@
 
 // 순수 함수 예시
 
+const add = (x, y) => x + y;
+
 
 // 불순 함수 예시
+
+const minus = (x, y) => {
+  console.log(x, y); // impure
+  return x - y;
+}
+
+const sum = (...args) => {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+  return args.reduce((acc, cur) => acc + cur, 0);
+}
 

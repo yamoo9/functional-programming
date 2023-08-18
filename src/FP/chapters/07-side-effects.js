@@ -37,7 +37,9 @@ function render(node) {
       node.innerHTML = '';
       node.append(beerElement);
     })
-    .catch((error) => console.error(error.message));
+    .catch((error) => {
+      node.innerHTML = error.message;
+    });
 }
 
 const rootElement = document.getElementById('root');
