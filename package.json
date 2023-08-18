@@ -5,6 +5,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ramda": "0.29.0",
     "vite": "4.4.8"
   },
   "devDependencies": {
